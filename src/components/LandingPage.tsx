@@ -83,13 +83,6 @@ export function LandingPage({ onViewDashboard }: LandingPageProps) {
                 <span>Join Waitlist</span>
                 <ArrowRight size={20} />
               </a>
-              <button
-                onClick={onViewDashboard}
-                className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 border-2 border-[#0A1A2F] text-[#0A1A2F] rounded-xl hover:bg-[#0A1A2F]/5 transition-colors"
-              >
-                <span>View Demo</span>
-                <ChevronRight size={20} />
-              </button>
             </div>
 
             {/* Social Proof */}
@@ -302,13 +295,6 @@ export function LandingPage({ onViewDashboard }: LandingPageProps) {
           </form>
 
           <div className="mt-16 pt-16 border-t border-white/10">
-            <button
-              onClick={onViewDashboard}
-              className="inline-flex items-center gap-2 text-[#4ABF9A] hover:text-[#4ABF9A]/80 transition-colors"
-            >
-              <span>Or explore the demo dashboard</span>
-              <ChevronRight size={20} />
-            </button>
           </div>
         </div>
       </section>
