@@ -5,12 +5,14 @@ export const WaitlistForm: React.FC = () => {
     <form
       name="waitlist"
       method="POST"
+      action="/"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       className="flex flex-col gap-3 sm:flex-row sm:items-center"
     >
       {/* Required for Netlify */}
       <input type="hidden" name="form-name" value="waitlist" />
+      <input type="hidden" name="redirect" value="/#waitlist" />
 
       {/* Honeypot field for spam */}
       <p className="hidden">
