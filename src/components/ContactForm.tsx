@@ -15,16 +15,14 @@ export function ContactForm({ onClose }: ContactFormProps) {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // In production, this would send to your backend
-    setSubmitted(true);
-    setTimeout(() => {
-      onClose();
-      setSubmitted(false);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 2000);
-  };
+ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  // Allow Netlify to handle the real form POST (NO preventDefault)
+  setSubmitted(true); // triggers "Message Sent!" UI
+
+  // Optional: scroll into view or show toast
+  // Optional: disable form fields now
+};
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
@@ -51,7 +49,22 @@ export function ContactForm({ onClose }: ContactFormProps) {
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-5">
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          onSubmit={handleSubmit}
+          className="p-6 space-y-5"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+
+<p className="hidden">
+  <label>
+    Don’t fill this out: <input name="bot-field" />
+  </label>
+</p>
+
           {/* Name */}
           <div>
             <label htmlFor="name" className="block text-[#0A1A2F] mb-2">
