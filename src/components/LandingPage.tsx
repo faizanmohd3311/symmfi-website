@@ -13,15 +13,9 @@ export function LandingPage({ onViewDashboard }: LandingPageProps) {
   const [submitted, setSubmitted] = useState(false);
   const [showContactForm, setShowContactForm] = useState(false);
 
-  const handleWaitlistSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-    // In production, this would send to your backend
-    setTimeout(() => {
-      setEmail('');
-      setSubmitted(false);
-    }, 3000);
-  };
+  const handleWaitlistSubmit = () => {
+  setSubmitted(true);
+};
 
   const features = [
     'Sharia-compliant expense cards',
@@ -273,26 +267,46 @@ export function LandingPage({ onViewDashboard }: LandingPageProps) {
             Join our waitlist to get early access and exclusive launch benefits
           </p>
 
-          <form onSubmit={handleWaitlistSubmit} className="max-w-md mx-auto">
-            <div className="flex flex-col sm:flex-row gap-3">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                required
-                className="flex-1 px-6 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#4ABF9A] focus:border-transparent"
-              />
-              <button
-                type="submit"
-                disabled={submitted}
-                className="px-8 py-4 bg-[#4ABF9A] text-white rounded-xl hover:bg-[#4ABF9A]/90 transition-colors disabled:opacity-50 whitespace-nowrap"
-              >
-                {submitted ? 'Added! ✓' : 'Join Waitlist'}
-              </button>
-            </div>
-            <p className="text-white/50 mt-4">No spam. Unsubscribe anytime.</p>
-          </form>
+          <form
+  name="waitlist"
+  method="POST"
+  data-netlify="true"
+  data-netlify-honeypot="bot-field"
+  onSubmit={handleWaitlistSubmit}
+  className="max-w-md mx-auto"
+>
+  {/* Netlify needs this to identify the form */}
+  <input type="hidden" name="form-name" value="waitlist" />
+  {/* Optional: stay on the same page after submit */}
+  <input type="hidden" name="redirect" value="/#waitlist" />
+
+  {/* Honeypot field for spam */}
+  <p className="hidden">
+    <label>
+      Don’t fill this out: <input name="bot-field" />
+    </label>
+  </p>
+
+  <div className="flex flex-col sm:flex-row gap-3">
+    <input
+      type="email"
+      name="email"            // 👈 THIS is crucial for Netlify
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+      placeholder="Enter your email"
+      required
+      className="flex-1 px-6 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#4ABF9A] focus:border-transparent"
+    />
+    <button
+      type="submit"
+      disabled={submitted}
+      className="px-8 py-4 bg-[#4ABF9A] text-white rounded-xl hover:bg-[#4ABF9A]/90 transition-colors disabled:opacity-50 whitespace-nowrap"
+    >
+      {submitted ? 'Added! ✓' : 'Join Waitlist'}
+    </button>
+  </div>
+  <p className="text-white/50 mt-4">No spam. Unsubscribe anytime.</p>
+</form>
 
           <div className="mt-16 pt-16 border-t border-white/10">
           </div>
