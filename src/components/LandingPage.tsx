@@ -85,7 +85,7 @@ export function LandingPage({ onViewDashboard }: LandingPageProps) {
                 <div className="text-[#0A1A2F] mb-1" style={{ fontSize: '1.5rem', fontWeight: 600 }}>5</div>
                 <div>On waitlist</div>
               </div> */}
-              <div className="w-px h-12 bg-gray-200"></div>
+              {/* <div className="w-px h-12 bg-gray-200"></div> */}
               <div className="text-center">
                 <div className="text-[#0A1A2F] mb-1" style={{ fontSize: '1.5rem', fontWeight: 600 }}>100%</div>
                 <div>Sharia compliant</div>
