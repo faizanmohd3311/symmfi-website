@@ -81,10 +81,10 @@ export function LandingPage({ onViewDashboard }: LandingPageProps) {
 
             {/* Social Proof */}
             <div className="flex items-center justify-center gap-8 text-[#0A1A2F]/60">
-              <div className="text-center">
-                <div className="text-[#0A1A2F] mb-1" style={{ fontSize: '1.5rem', fontWeight: 600 }}>500+</div>
+              {/* <div className="text-center">
+                <div className="text-[#0A1A2F] mb-1" style={{ fontSize: '1.5rem', fontWeight: 600 }}>5</div>
                 <div>On waitlist</div>
-              </div>
+              </div> */}
               <div className="w-px h-12 bg-gray-200"></div>
               <div className="text-center">
                 <div className="text-[#0A1A2F] mb-1" style={{ fontSize: '1.5rem', fontWeight: 600 }}>100%</div>
@@ -92,8 +92,8 @@ export function LandingPage({ onViewDashboard }: LandingPageProps) {
               </div>
               <div className="w-px h-12 bg-gray-200"></div>
               <div className="text-center">
-                <div className="text-[#0A1A2F] mb-1" style={{ fontSize: '1.5rem', fontWeight: 600 }}>Q2 2025</div>
-                <div>Launch date</div>
+                <div className="text-[#0A1A2F] mb-1" style={{ fontSize: '1.5rem', fontWeight: 600 }}>Q2 2026</div>
+                <div>Launch timeline</div>
               </div>
             </div>
           </div>
